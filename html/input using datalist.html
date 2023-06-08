@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>complete website using datalist</title>
+    <link rel="stylesheet" href="id.css">
+</head>
+<body>
+    <img src="https://t3.ftcdn.net/jpg/03/04/76/60/360_F_304766094_oGfiNaNzXOXli1xFLLeqYgZjBABsUB29.jpg" style="height: 400px; width: 1500px; " alt="img not found">
+    <form action="https://github.com/Abir-Ashab" method="get">
+        <label for="username"> <b>Username</b></label><br>
+        <!-- autofocus hocche cursor er focus oi specifi place e ane -->
+        <input id = "username" type="text" autofocus placeholder="***@gmail.com"><br> <br>
+        <label for="password"><b>Password</b></label><br>
+        <!-- required hocche oi jinishta must input dite hob eta bujhay,you can't go through "click me" without entering any password -->
+        <input id = "password" type="password" maxlength="8" required placeholder="********"><br> <br>
+        <label for="state"><b>State</b></label> <br>
+        <input type="text" list="mylist">
+        <datalist id="mylist">
+            <option value="dhaka">dhaka</option>
+            <option value="chittogong">chittogong</option>
+            <option value="sylhet">sylhet</option>
+            <option value="khulna">khulna</option>
+        </datalist> <br> <br>
+        <input type="submit" style="background-color: burlywood;" value="click me">    
+    </form>  
+</body>
+</html>

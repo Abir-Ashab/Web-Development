@@ -1,0 +1,107 @@
+body {
+    background: blanchedalmond;
+    /* background size deyate ami website e phone diye dhukleo chhobi crop ba change hobe na */
+    background-size: contain;
+    background-attachment: scroll;
+}
+.first p {
+    background-color: lightgray;
+    text-align: justify;
+    /* indent --> shuruta kototuku vitor theke hocche oita,ekhane lorem ta 15 px dure achhe border theke */
+    text-indent: 15px;
+    line-height: 1cm;
+    text-decoration: underline;
+}
+.first {
+    max-width: 500px;
+    /* content er block --> border */
+    border: 15px solid yellowgreen;
+    margin: auto;
+    /* content to border er distance --> padding */
+    padding: 10px;
+    display: block;
+    outline: 15px solid green;
+    /* text-decoration: underline; */
+}
+#innerHTML {
+    display: block; 
+    margin: auto;
+    width: 150px;
+    background-color: burlywood;
+    padding: 25px;
+    border-radius: 10px 10px;
+    text-decoration: none;
+}
+#innerHTML :hover{
+    background-color: rebeccapurple;
+    color: red;
+    opacity: 0.5;
+}
+#innerHTML :checked{
+    background-color: green;
+    color: red;
+}
+#innerHTML :visited{
+    background-color: blue;
+    color: red;
+}
+.listclass {
+    margin: auto;
+    background-color: lightblue;
+    padding: 10px;
+    width: 34%;
+    border: 20px solid gray;
+    margin-top: 100px;
+}
+.listclass ol li {
+    /* background-color: greenyellow; */
+    padding: 10px;
+}
+.mytable {
+    margin-top: 20px;
+    padding: 40px;
+}
+.tableContent {
+    margin: auto;
+    background-color: blanchedalmond;
+    padding: 30px;
+    width: 33%;
+    border: 20px solid gray;
+}
+.tableContent table {
+    border: 2px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    margin: auto;
+}
+.tableContent table th {
+    border: 2px solid black;
+    background-color: lightgreen;
+    padding: 10px;
+}
+.tableContent table td {
+    border: 2px solid black;
+    background-color: white;
+    padding: 10px;
+}
+.mydisplay {
+    color: navy;
+    text-align: center;
+    background-color: violet;
+    position: sticky;
+    padding: 15px;
+    margin-bottom: 100px;
+    top: 0;
+    text-decoration: underline;
+}
+.myfloat {
+    max-width: 500px;
+    border: 32px solid gray;
+    overflow: auto;
+    margin: auto;
+}
+/* img ta right e chhilo oitake left e ansi */
+#myimg {
+    float: left;
+    align-content: center;
+}

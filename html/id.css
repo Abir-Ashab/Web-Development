@@ -1,0 +1,16 @@
+
+#kahini, #username, #password {
+    color: blue;
+}
+label {
+    color: blue;
+}
+button {
+    background-color: cyan;
+}
+form {
+    text-align: center;
+}
+input {
+    padding: 10px;
+}

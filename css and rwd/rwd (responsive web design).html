@@ -1,0 +1,61 @@
+<!-- ekhane responisve web design implement kora hoise -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWD(responsive web design)</title>
+    <!-- internal css -->
+    <style>
+        /* "*" diye shobdhoroner jinishe css apply kore */
+        * {
+            box-sizing: border-box;
+            padding: 20px;
+        }
+        .header {
+            border: 2px solid blue;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .left {
+            border: 2px solid blue;
+            margin-bottom: 10px;
+            float: left;
+            text-align: justify;
+            width: 30%;
+        }
+        .main {
+            border: 2px solid blue;
+            float: right;
+            width: 69%;
+            margin-left: 1%;
+            text-align: justify;
+        }
+        /* ekhane ami body color change kore disi jokhon amr screen width(minimize kore dekh0) 900 px er kom hoye jacche */
+        @media only screen and (max-width : 900px) {
+            body {
+                background-color: cyan;
+            }
+        }
+        /* ekhane ami body color change kore disi jokhon amr screen width(minimize kore dekh0) 700 px er kom hoye jacche */
+        @media only screen and (max-width : 700px) {
+            body {
+                background-color: yellowgreen;
+                text-decoration: underline;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>This is the header</h1>
+    </div>
+    <div class="left">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quo maiores tenetur delectus optio magnam excepturi culpa, veniam reprehenderit unde? Repudiandae reprehenderit autem vel voluptas eum hic sit nobis architecto voluptatum ducimus? Ipsa debitis, cumque, nihil voluptatibus, odit deserunt quae omnis consequatur rem dolor saepe modi! Doloremque aut error laudantium.
+    </div>
+    <div class="main">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit rem dolor minus asperiores temporibus aliquam fugiat, maiores placeat aperiam eligendi corrupti ipsa odio odit voluptate perferendis accusamus? Eveniet veritatis amet impedit dicta eligendi voluptas quasi tenetur dolorem dolorum asperiores? Vero nulla adipisci animi nobis, velit voluptatum laboriosam ut quod sequi repudiandae cupiditate magnam aliquid facilis impedit, sint exercitationem deserunt quas a qui porro minima enim. Doloremque nam inventore sit quod provident, corrupti nisi dolor sequi amet culpa, quae impedit obcaecati recusandae alias blanditiis, similique cupiditate voluptatum itaque architecto exercitationem accusantium consequuntur rerum tempora? Labore nam facilis quisquam quidem culpa saepe?
+    </div>
+</body>
+</html>
