@@ -1,0 +1,24 @@
+/* ekhane ja likhtesi tar shob e bootstrap e kora achhe,ami just modify kortesi or override kortesi */
+.container {
+    border: 2px solid red;
+    padding: 10px;
+}
+.container-fluid {
+    border: 2px solid red;
+    padding: 10px;
+}
+.row {
+    border: 2px solid blue;
+}
+.col-7 {
+    border: 2px solid blue;
+}
+.col-5 {
+    border: 2px solid blue;
+}
+.col-8 {
+    border: 2px solid blue;
+}
+.col-4 {
+    border: 2px solid blue;
+}

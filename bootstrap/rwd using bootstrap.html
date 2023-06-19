@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Hello  bootstrap</title>
+  </head>
+  <body>
+    <!-- container ekta inbuilt command of bootstrap,eta both left and right side theke 15px kore jayga niye ney -->
+    <div class="container">
+        <div class="row">
+             <!-- evabe 12 ta col or 12 ta row neya jabe -->
+            <!-- <div class="col">
+                <p>first</p>
+            </div>
+            <div class="col">
+                <p>second</p>
+            </div>
+            <div class="col">
+                <p>third</p>
+            </div> -->
+            <!-- 5 ta mile jetuk jayga nito ta nise, r p-3 diye bujhay padding 3 poriman nise,bootstrap er padding kom dilei beshi hou,max 5 -->
+            <div class="col-5 p-3" >
+                <p>give me space for 5 column</p>
+            </div>
+            <div class="col-7 p-3">
+                <p>give me space for 7 column</p>
+            </div>
+        </div>
+        <div class="row">
+            <!-- col-sm-12 mane hocche small device e col size 12 tar poriman nibe -->
+            <!-- bg-warning mane yello background,bg-primary mnae blue -->
+           <div class="col-8 col-sm-12 p-3 bg-warning" >
+               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga porro sequi quia ex quo. Laborum fuga a similique laudantium ipsam eligendi eaque veniam quae modi asperiores accusantium nisi accusamus exercitationem dolor sit excepturi quam ad, sunt quia illo nam sed libero! Quo ipsam aspernatur temporibus voluptatibus, qui id tempore dicta aut consectetur sunt repellendus, provident laborum illum aliquam maiores doloribus? Incidunt, beatae. Earum laudantium ducimus in soluta odit nobis magnam atque laborum error sapiente vitae reiciendis, tempore placeat excepturi voluptate corporis quia. Natus quam officia vel incidunt, soluta blanditiis suscipit ducimus delectus! Qui porro hic aliquid, illo quam similique, recusandae nam nihil voluptatem, animi provident? Non rerum perferendis minima delectus totam impedit earum a? Labore cum, beatae illum exercitationem amet quidem voluptas explicabo? Reiciendis veniam porro architecto autem illum quod, impedit nam minima ipsam atque optio quidem enim voluptas dolore, eum at, incidunt esse. Ullam repellat dolorum aliquid saepe quidem et? Pariatur vitae nobis error perferendis aspernatur, tenetur quod fuga illum aliquam dolorum earum autem quisquam officiis ipsum nostrum sint libero dolores quasi! Totam voluptatibus dolore quis. Nemo fugiat ipsam fuga itaque repudiandae deserunt animi, et neque vel deleniti facilis! Aspernatur distinctio pariatur repellat minima incidunt officiis odio temporibus placeat accusamus? Fuga est omnis, vero dolore odio ullam eius nemo voluptate veritatis totam! Consectetur eveniet aliquam eius itaque numquam impedit eaque quis quia reiciendis dignissimos voluptatum voluptatibus perferendis, unde dolore praesentium, vel saepe aperiam expedita illum suscipit amet? Nemo incidunt sequi odio itaque pariatur quibusdam unde temporibus vitae eos sit?</p>
+           </div>
+           <div class="col-4 p-3">
+               <p>give me space for 4 column</p>
+           </div>
+       </div>
+    </div>
+    <!-- table section -->
+    <!-- mb-3 = margin bottom  3 px -->
+    <div class="container mb-3">
+        <table class="table table-striped">
+            <!-- <thead class="table-dark"> eta dile 1st row er background dark hoto-->
+            <thead class="table"></thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <!-- image section -->
+    <div class="container mb-3">
+        <div class="row">
+            <div class="col">
+                <img src="img.jpg" class="img-fluid" alt="none">
+            </div>
+            <div class="col">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum debitis praesentium earum rerum, sed est non commodi itaque error unde esse ut laudantium veniam neque odit ex possimus dolores deleniti voluptates maiores fugit atque. Quibusdam, eos ducimus error, cum quae voluptatibus repellendus ad, quam possimus perspiciatis velit culpa dignissimos harum neque illo! Deserunt facere, repellat voluptates consequatur voluptatem illo mollitia distinctio. Labore delectus officiis temporibus impedit blanditiis excepturi ipsum maxime optio culpa odio quaerat eos atque voluptatibus, voluptatum, eveniet vero libero id mollitia eaque dolor perferendis. Porro, accusamus quasi. Numquam consectetur minima fugiat! Ducimus, modi ut! Sint officia impedit saepe!</div>
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid mb-5">
+        <div class="container">
+          <h1 class="display-4">Fluid jumbotron</h1>
+          <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        </div>
+    </div>
+     <!-- btn = button, btn-primary mane blue color -->
+     <div class="container mb-3">
+      <button class="btn btn-primary">
+        click me
+      </button>
+    </div>
+    <!-- progress-bar -->
+    <div class="container">
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+      </div>
+    </div>
+    <!-- alert -->
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Well done!</h4>
+        <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+        <hr>
+        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+    </div>
+   
+    <!-- container fluid ta kore na -->
+    <!-- <div class="container-fluid"></div> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
