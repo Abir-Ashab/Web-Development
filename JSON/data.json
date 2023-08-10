@@ -1,0 +1,19 @@
+ {
+    "student" : [
+        {
+            "name" : "Abir",
+            "Roll" : 1315,
+            "Year" : "third"
+        },
+        {
+            "name" : "Ashab",
+            "Roll" : 1325,
+            "Year" : "4th"
+        },
+        {
+            "name" : "Niloy",
+            "Roll" : 1335,
+            "Year" : "2nd"
+        }
+    ]
+}
