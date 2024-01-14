@@ -1,0 +1,7 @@
+1)npm create vite@latest
+2)naaam deo
+3)select react
+4)select javascript
+5)cd naaam
+6)npm i
+7)npm run dev
