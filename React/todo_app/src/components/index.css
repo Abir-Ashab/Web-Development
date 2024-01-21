@@ -1,0 +1,52 @@
+.custom-modal {
+background-color: #1890ff; 
+}
+
+.input-container {
+margin-top: 1%;
+}
+.form {
+background-color: #607b94;;
+color: black;
+font-weight: bold;
+padding: 4px;
+}
+
+.list-item {
+margin-bottom: 16px;
+}
+
+.icons {
+margin-top: 8px;
+display: flex;
+justify-content: space-between;
+}
+
+.icons button {
+margin-right: 8px;
+}
+
+
+.list-item {
+margin-bottom: 10px;
+}
+
+.list-item {
+background-color: #fff; 
+border: 1px solid #3498db;
+border-radius: 4px; 
+padding: 10px;
+}
+
+.list-item:hover {
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.card {
+background-color: grey;
+margin-bottom: 2rem;
+margin-left: 30%;
+margin-right: 30%;
+padding: auto;
+margin-top: 2%;
+}

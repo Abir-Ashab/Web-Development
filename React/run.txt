@@ -3,5 +3,15 @@
 3)select react
 4)select javascript
 5)cd naaam
-6)npm i
-7)npm run dev
+6)npm install -D tailwindcss postcss autoprefixer
+7)npx tailwindcss init -p
+8)in tailwind.config replace :
+content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+9)place index.css with :
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+9)npm run dev
