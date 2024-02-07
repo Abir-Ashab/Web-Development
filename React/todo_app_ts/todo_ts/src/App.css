@@ -1,0 +1,226 @@
+.icons i.icon-done {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #28a745; 
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 100px;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+.navbar button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.app-heading {
+  color: white;
+  background-color: #316fc1;
+  padding: 4px;
+  margin-left: 30%;
+  text-align: center;
+  margin-right: 30%;
+}
+
+
+.badge {
+  background-color: red; 
+  color: white;
+  padding: 4px 8px;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+
+.nav-item {
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+  color: white;
+  font-weight: bold;
+  padding: 4px;
+  background-color: #316fc1;
+}
+
+.icon-files, .icon-deleted {
+  margin-right: 5px;
+}
+
+.app-heading {
+  margin-top: 20px;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-color: #333;
+}
+.input-container{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.input-box-todo{
+  margin-left: 10px;
+  width: 70%;
+  height: 40px;
+  border-radius: 14px;
+  border:1px solid black;
+  padding-left: 10px;  
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+  outline: none;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: large;
+}
+.add-btn{
+  background-color: red;
+  color: white;
+  font-weight: bolder;
+  font-size: larger;
+  margin-left: 10px;  
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 4px;
+}
+.add-btn:active{
+  box-shadow: none;
+}
+.list-container{
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+.list-item{
+  list-style-type: none;
+  /* background-color: #596e8b; */
+  border:2px solid rgb(161, 158, 158);
+  color: white;
+  padding:3px;
+  padding-left: 5px;
+  border-radius: 5px; 
+  width: 100%;
+  height: 30px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 10px;
+  gap: 200px;
+}
+.icons{
+  position: absolute;
+  right: 10px;
+}
+.icons i{
+  margin: 4px;
+  font-size: large;
+  cursor: pointer;
+  transition: 0.1s;   
+}
+.icons i:hover{
+  transform: scale(1.2);  
+}
+.icon-delete:hover{
+  color: red;
+}
+
+.top-right-corner {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  display: flex;
+}
+
+.badge {
+  background-color: blue; 
+  color: white;
+  padding: 4px 8px;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+.fa-file,
+.fa-trash-can {
+  margin-right: 5px;
+}
+/* Add these styles to your existing CSS file or create a new stylesheet */
+
+/* Modal */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  max-width: 400px;
+  text-align: center;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+
+/* Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* Form styling */
+.modal-content label {
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-content button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #45a049;
+}
+

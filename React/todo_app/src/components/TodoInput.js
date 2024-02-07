@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Modal, Form, Input, DatePicker, TimePicker, Button } from 'antd';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
-import './index.css'; 
+import './index.css';
 
-function TodoInput({ addList }) {
+const TodoInput = ({ addList }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
 
@@ -20,7 +20,13 @@ function TodoInput({ addList }) {
     form
       .validateFields()
       .then(values => {
-        addList(values);
+        const convertedValues = {
+          ...values,
+          dueDate: values.dueDate ? values.dueDate.toDate() : null,
+          setTime: values.setTime ? values.setTime.toDate() : null,
+        };
+
+        addList(convertedValues);
         form.resetFields();
         setIsModalVisible(false);
       })
@@ -48,10 +54,10 @@ function TodoInput({ addList }) {
             Submit
           </Button>,
         ]}
-        className="custom-modal" 
+        className="custom-modal"
       >
         <Form
-          className= "form"
+          className="form"
           form={form}
           layout="vertical"
           name="todoForm"
@@ -80,6 +86,6 @@ function TodoInput({ addList }) {
       </Modal>
     </div>
   );
-}
+};
 
 export default TodoInput;

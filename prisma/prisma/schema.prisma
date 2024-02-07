@@ -1,0 +1,16 @@
+datasource db {
+  url      = env("DATABASE_URL")
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model TodoList {
+  id        Int      @id @default(autoincrement())
+  title     String
+  task      String
+  dueDate   DateTime?  // Add a field for due date
+  setTime   DateTime?  // Add a field for set time
+}

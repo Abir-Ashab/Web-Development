@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { Card, Button, Popconfirm, Form, Input, DatePicker, TimePicker } from 'antd';
+import { Card, Button, Popconfirm } from 'antd';
 import { DeleteOutlined, CheckCircleOutlined, EditOutlined } from '@ant-design/icons';
-
+import { Modal, Form, Input, DatePicker, TimePicker } from 'antd';
 import './index.css';
 
-const { TextArea } = Input;
-
-function Todolist({
+const TodoList = ({
   item,
   index,
   deleteItem,
@@ -14,11 +12,10 @@ function Todolist({
   editItem,
   showDeleteIcon,
   openModal,
-}) {
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTask, setEditedTask] = useState({ ...item });
-
-  const [form] = Form.useForm(); // Declare form here
+  const [form] = Form.useForm();
 
   const handleDelete = () => {
     deleteItem(index);
@@ -32,18 +29,23 @@ function Todolist({
 
   const handleEdit = () => {
     setIsEditing(true);
-    form.setFieldsValue(editedTask);
   };
 
   const handleEditConfirm = () => {
     form
       .validateFields()
-      .then((values) => {
-        editItem(index, values);
+      .then(values => {
+        const convertedValues = {
+          ...values,
+          dueDate: values.dueDate ? new Date(values.dueDate).toLocaleString() : null,
+          setTime: values.setTime ? new Date(values.setTime).toLocaleString() : null,
+        };
+
+        editItem(index, convertedValues);
         setIsEditing(false);
       })
-      .catch((errorInfo) => {
-        console.log('Validation Failed:', errorInfo);
+      .catch(info => {
+        console.log('Validate Failed:', info);
       });
   };
 
@@ -57,9 +59,18 @@ function Todolist({
   };
 
   return (
-    <Card className="card" title="Task Details" extra={<a href="#"></a>} style={{ marginBottom: '10px' }}>
+    <Card
+      className="card"
+      title="Task Details"
+      extra={<a href="#"></a>}
+      style={{ marginBottom: '10px' }}
+    >
       {isEditing ? (
-        <Form form={form} initialValues={editedTask}>
+        <Form
+          form={form}
+          initialValues={editedTask}
+          layout="vertical"
+        >
           <Form.Item label="Task Title" name="taskTitle">
             <Input />
           </Form.Item>
@@ -70,14 +81,12 @@ function Todolist({
             <TimePicker />
           </Form.Item>
           <Form.Item label="Note" name="note">
-            <TextArea />
+            <Input.TextArea />
           </Form.Item>
           <Button type="primary" onClick={handleEditConfirm}>
             Confirm
           </Button>
-          <Button type="primary" danger onClick={handleEditCancel}>
-            Cancel
-          </Button>
+          <Button onClick={handleEditCancel}>Cancel</Button>
         </Form>
       ) : (
         <>
@@ -85,10 +94,10 @@ function Todolist({
             <strong>Task Title:</strong> {item.taskTitle}
           </div>
           <div>
-            <strong>Due Date:</strong> {item.dueDate}
+            <strong>Due Date:</strong> {item.dueDate && new Date(item.dueDate).toLocaleString()}
           </div>
           <div>
-            <strong>Set Time:</strong> {item.setTime}
+            <strong>Set Time:</strong> {item.setTime && new Date(item.setTime).toLocaleString()}
           </div>
           <div>
             <strong>Note:</strong> {item.note}
@@ -115,14 +124,14 @@ function Todolist({
                 Mark as Done
               </Button>
             )}
-            <Button type="primary" onClick={handleEdit} icon={<EditOutlined />}>
-              Edit
+            <Button type="primary" onClick={() => openModal(index, item)} icon={<EditOutlined />}>
+              Edit in Modal
             </Button>
           </span>
         </>
       )}
     </Card>
   );
-}
+};
 
-export default Todolist;
+export default TodoList;
