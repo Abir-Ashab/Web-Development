@@ -1,0 +1,3 @@
+1)Jokhon amake kono ekta same kaaj repeatedly korte hoy tokhon amra ekta component create kore oitake barbar resues kori.Kind of function with parameter
+2)In short ----> similar look, different data
+3)Aro shohoje bolte gele eta hochchhe handmade html tag, maane amra nijeder moto kore html tag baniye nichchhi

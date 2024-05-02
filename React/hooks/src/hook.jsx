@@ -16,7 +16,8 @@ function Hook() {
           setValue(value + 1)
       }}>Add Value {value} </button>
       {/* way 2 */}
-      <button onClick={addval}>Add Value {value} </button>
+      <button onClick={addval}>Add Value {value} </button> 
+       {/* ei je value change hochchhe eta ke bole re-rendering or reconciliation */}
       <h2>Value after adding hook is {value}</h2>
     </>
   )

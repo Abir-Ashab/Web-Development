@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <h2>Value is {value}</h2>
-      <button onClick={addval}>Add Value {value}</button>
+      <button onClick={addval}>Add Value {value}</button> 
       <h2>Value is now {value}</h2>
     </>
   )

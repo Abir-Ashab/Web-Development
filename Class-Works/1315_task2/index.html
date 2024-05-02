@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scholarship Application Form</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h3>Scholarship Application Form</h3>
+<h5>* denotes mandatory field</h5>
+
+<form id="applicationForm" method="post">
+    <label for="studentId">Student Id*</label><br>
+    <input type="text" id="studentId" name="studentId" required><br>
+    
+    <label for="fullName">Full Name*</label><br>
+    <input type="text" id="fullName" name="fullName" required><br>
+    
+    <label for="email">Email Address*</label><br>
+    <input type="email" id="email" name="email" required><br>
+    
+    <label for="dob">Date of Birth*</label><br>
+    <input type="text" id="dob" name="dob" placeholder="MM/DD/YYYY" required><br>
+    
+    <label for="cgpa">CGPA*</label><br>
+    <input type="text" id="cgpa" name="cgpa" required><br>
+    
+    <label for="phoneNo">Phone No.*</label><br>
+    <input type="text" id="phoneNo" name="phoneNo" required><br>
+    
+    <button type="submit">Submit</button>
+</form>
+     <script src="script.js"></script>
+</body>
+</html>

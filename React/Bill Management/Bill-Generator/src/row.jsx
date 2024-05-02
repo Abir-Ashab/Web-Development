@@ -1,67 +1,35 @@
 import React from 'react';
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
-
-
+import jsPDF from 'jspdf';
+import './index.css';
+import banglaFont from './BanglaFont.ttf'; // Import your Bangla font
 
 function Row({ row, headers }) {
-  const generatePDF = async () => {
-    const pdfDoc = await PDFDocument.create();
-    const page = pdfDoc.addPage();
-    const { width, height } = page.getSize();
-    const N = null, M = null;
-    let y = height - 50;
-    for (let i = 0; i < row.length; i++) {
-        if(headers[i] == 'Number of students supervised for SPL') {
-            const text = `Number of students supervised for SPL is : ${row[i]} জন`;
-            console.log(text);
-            page.drawText(text, { x: 50, y, size: 12 });
-            y -= 20;
-        }
-        if(headers[i] == 'Number of SPL Reports Checked') {
-            const text = `Number of SPL Reports Checked is : ${row[i]}`;
-            page.drawText(text, { x: 50, y, size: 12 });
-            y -= 20;
-        }
-        if(headers[i] == 'Number of Thesis Reports Checked') {
-            const text = `Number of Thesis Reports Checked is : ${row[i]}`;
-            page.drawText(text, { x: 50, y, size: 12 });
-            y -= 20;
-        }
-        if(headers[i] ==  'Number of students supervised for Thesis') {
-            const text = `Number of students supervised for MS thesis is :  : ${row[i]}`;
-            page.drawText(text, { x: 50, y, size: 12 });
-            y -= 20;
-        }
-    }
+  const generatePDF = () => {
+    const doc = new jsPDF();
 
-    const pdfBytes = await pdfDoc.save();
+    // Register Bangla font
+    doc.addFileToVFS(banglaFont, 'BanglaFont');
+    doc.addFont('BanglaFont', 'Bangla', 'normal');
+    doc.setFont('Bangla');
 
-    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'output.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Encode Bengali text as Unicode
+    const bengaliText = 'জন';
+
+    row.forEach((cell, index) => {
+      doc.text(`${bengaliText}: ${cell}`, 10, 10 + index * 10);
+    });
+
+    doc.save('output.pdf');
   };
 
   return (
     <div className="row">
-      {row.map((cell, index) => {
-    let N;
-    if (headers[index] === 'Number of students supervised for SPL') {
-      // Assuming cell contains the value of students supervised
-      N = parseInt(cell);
-    }
-
-    return (
-      <div className={`cell ${headers[index] === 'Number of students supervised for SPL' ? 'spl-cell' : ''}`} key={index}>
-        <span className="header">{headers[index]}:</span> {cell} 
-      </div>
-    );
-  })}
-  <button className='mb-10 text-red-700' onClick={generatePDF}>Generate PDF</button>
+      {row.map((cell, index) => (
+        <div key={index}>
+          <span className="header">{headers[index]}:</span> {cell}
+        </div>
+      ))}
+      <button className="bg-color bg-red-200" onClick={generatePDF}>Generate PDF</button>
     </div>
   );
 }

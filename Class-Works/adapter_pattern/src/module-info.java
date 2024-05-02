@@ -1,0 +1,2 @@
+module adapter_pattern {
+}
