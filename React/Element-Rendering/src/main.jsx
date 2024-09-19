@@ -8,7 +8,8 @@ console.log(element);//eta dekhle bujha jabe je hello world lekhati props er chi
 console.log(element.props.children);
 
 ReactDOM.createRoot(document.getElementById('root')).render(element)//rendering koray eta web e show kortese,eta rendering hocche index.html er div e by the ID "root"
-setInterval(() => {
+
+setInterval(() => { // eta deya means time ta ke dynamic kora, eta lifecycle method
   const element2 = <h1>Time {new Date().toLocaleTimeString()}</h1>
   ReactDOM.createRoot(document.getElementById('root2')).render(element2)
 }, 1000);
@@ -21,8 +22,6 @@ function Func({ format }) {
 }
 ReactDOM.createRoot(document.getElementById('root3')).render(Func({ format: 'bn-BD' }));
 //This will also do the same : ReactDOM.createRoot(document.getElementById('root3')).render(<Func format = 'bn-BD' />);
-
-
 
 // class component
 class Clock2 extends React.Component {

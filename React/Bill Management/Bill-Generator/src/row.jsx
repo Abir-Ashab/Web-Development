@@ -1,19 +1,12 @@
 import React from 'react';
 import jsPDF from 'jspdf';
 import './index.css';
-import banglaFont from './BanglaFont.ttf'; // Import your Bangla font
 
 function Row({ row, headers }) {
   const generatePDF = () => {
     const doc = new jsPDF();
 
-    // Register Bangla font
-    doc.addFileToVFS(banglaFont, 'BanglaFont');
-    doc.addFont('BanglaFont', 'Bangla', 'normal');
-    doc.setFont('Bangla');
-
-    // Encode Bengali text as Unicode
-    const bengaliText = 'জন';
+    const bengaliText = 'shei';
 
     row.forEach((cell, index) => {
       doc.text(`${bengaliText}: ${cell}`, 10, 10 + index * 10);
@@ -21,7 +14,6 @@ function Row({ row, headers }) {
 
     doc.save('output.pdf');
   };
-
   return (
     <div className="row">
       {row.map((cell, index) => (
@@ -33,5 +25,4 @@ function Row({ row, headers }) {
     </div>
   );
 }
-
 export default Row;

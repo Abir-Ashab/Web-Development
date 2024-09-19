@@ -2,6 +2,11 @@
 import { useState } from "react"
 import Bairer_component from "./component"
 import Components from "./components_usingMap"
+import Test from "./Test"
+
+const addition =(a, b) => {
+  console.log(a + b);
+}
 function App() {
   return (
     <>
@@ -12,6 +17,8 @@ function App() {
       <Components></Components> 
       {/* rendering multiple elements */}
       <Counter></Counter>
+      
+      <Test addition = {addition}> </Test>
     </>
   )
 }

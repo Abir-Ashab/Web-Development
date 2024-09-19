@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ExcelJS from 'exceljs';
 import './App.css';
-import Row from './row'; // Import the Row component
+import Row from './row'; 
 
 function App() {
   const [excelData1, setExcelData1] = useState([]);
@@ -36,7 +36,6 @@ function App() {
   return (
     <>
       <input type="file" onChange={(e) => handleFileUpload(1, e)} />
-
       {excelData1.length > 0 && (
         <div className="container">
           {excelData1.slice(1).map((row, rowIndex) => (
@@ -47,5 +46,4 @@ function App() {
     </>
   );
 }
-
 export default App;
