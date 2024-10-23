@@ -4,6 +4,7 @@ import axios from "axios";
 const CreatePost = (props) => {
   const [description, setDescription] = useState("");  // State for description
   const [code, setCode] = useState("");  // State for code
+  const [codeExtension, setCodeExtension] = useState("txt");  // State for code extension
   const [file, setFile] = useState(null);  // State for file
   const [message, setMessage] = useState("");
   const { userId } = props;
@@ -22,6 +23,7 @@ const CreatePost = (props) => {
     
     if (code) {
       formData.append("code", code);  // Add code if provided
+      formData.append("codeExtension", codeExtension);  // Add code extension if provided
     }
     
     if (file) {
@@ -34,12 +36,13 @@ const CreatePost = (props) => {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(response);
+      // console.log(response);
       if (response.status === 201) {
         setMessage("Post created successfully!");
         setDescription(""); 
         setCode(""); 
         setFile(null);  // Reset file input
+        setCodeExtension("txt");  // Reset the code extension
       } else {
         setMessage("Failed to create post");
       }
@@ -53,7 +56,6 @@ const CreatePost = (props) => {
     <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
       <h2 className="text-xl font-semibold mb-4">Create a Post</h2>
       <form onSubmit={handleSubmit}>
-        {/* Description field */}
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -61,22 +63,36 @@ const CreatePost = (props) => {
           required
           className="w-full h-32 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 resize-none"
         />
-
-        {/* Code field */}
         <textarea
           value={code}
           onChange={(e) => setCode(e.target.value)}
           placeholder="Write your code here (if any)..."
           className="w-full h-32 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4 resize-none"
         />
-
-        {/* File field */}
+        <div className="mb-4">
+          <label htmlFor="codeExtension" className="mr-2">Select Code Extension:</label>
+          <select
+            id="codeExtension"
+            value={codeExtension}
+            onChange={(e) => setCodeExtension(e.target.value)}
+            className="border border-gray-300 rounded-md p-2"
+          >
+            <option value="c">.c</option>
+            <option value="cpp">.cpp</option>
+            <option value="cs">.cs</option>
+            <option value="txt">.txt</option>
+            <option value="js">.js</option>
+            <option value="py">.py</option>
+            <option value="java">.java</option>
+            <option value="html">.html</option>
+            <option value="css">.css</option>
+          </select>
+        </div>
         <input 
           type="file" 
           onChange={handleFileChange}
           className="mb-4"
         />
-
         <button
           type="submit"
           className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out"

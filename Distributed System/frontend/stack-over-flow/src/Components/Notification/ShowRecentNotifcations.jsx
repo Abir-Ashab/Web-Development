@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import FetchAndDisplayFile from "../Posts/FetchAndDisplayFile";
 
 const NotificationAlert = () => {
   const [notifications, setNotifications] = useState([]);
@@ -20,12 +23,12 @@ const NotificationAlert = () => {
       try {
         // console.log("ShowNotification : ", id);  
         const response = await axios.get("http://localhost:5000/notification");
-        console.log(response.length);
+        // console.log(response.length);
         
         const filteredNotifications = response.data.filter((notification) => notification.user._id !== id);
-        console.log(filteredNotifications.length);
+        // console.log(filteredNotifications.length);
         const lastSevenDaysNotifications = filterLastSevenDays(filteredNotifications);
-        console.log(lastSevenDaysNotifications);
+        // console.log(lastSevenDaysNotifications);
         setNotifications(lastSevenDaysNotifications);
       } catch (error) {
         console.error("Error fetching notifications", error);
@@ -42,7 +45,7 @@ const NotificationAlert = () => {
         setNewNotification(true);  
         setNotifications(lastSevenDaysNotifications); 
       }
-    }, 10000); 
+    }, 1000); 
 
     return () => clearInterval(interval);
   }, [notifications]);
@@ -104,15 +107,19 @@ const NotificationAlert = () => {
         ) : selectedPost ? (
           <div className="mt-6 bg-gray-100 p-4 rounded shadow-lg">
             <p><strong>{selectedPost.description}</strong> </p>
-            {selectedPost.code && (
-              <pre className="bg-gray-200 p-3 mt-2 rounded">
-                <code>{selectedPost.code}</code>
-              </pre>
-            )}
-            {selectedPost.fileUrl && (
-                <a href={`${selectedPost.fileUrl}`} download className="text-blue-500 underline">
-                  Download File
-                </a>
+            {selectedPost.code ? (
+              <SyntaxHighlighter
+                language="javascript" 
+                style={vscDarkPlus} 
+                className="p-3 mt-2 rounded"
+              >
+                {selectedPost.code}
+              </SyntaxHighlighter>
+            )
+            : (
+              <div>
+                <FetchAndDisplayFile fileUrl={selectedPost.fileUrl} />
+              </div>
             )}
             <p className="text-sm text-gray-500 mt-2">By: {selectedPost.user.email}</p>
           </div>

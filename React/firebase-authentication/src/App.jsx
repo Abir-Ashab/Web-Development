@@ -58,11 +58,11 @@ function App() {
     let isValid = true; 
     
     if (e.target.name === 'email') {
-      isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value); // Basic email validation
+      isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.target.value); 
     } 
     
     if (e.target.name === 'password') {
-      isValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(e.target.value); // Strong password validation
+      isValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(e.target.value); 
     }
 
     if (isValid) {
@@ -75,7 +75,7 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevents form from reloading the page
 
-    if (user.email && user.password) {
+    if (signup && user.email && user.password) {
       const auth = getAuth();
       createUserWithEmailAndPassword(auth, user.email, user.password)
         .then((userCredential) => {
@@ -130,20 +130,28 @@ function App() {
         <label htmlFor="sign-up">Sign up</label>
         <form onSubmit={handleSubmit}>
           {
-            signup && <div>
-            <input type="text" name="name" onBlur={handleBlur} placeholder='First name' required />
-            <br />
-            <input type="text" name="name" onBlur={handleBlur} placeholder='Last name' required />
-            <br />
+            signup ? (
+            <div>
+              <input type="text" name="name" onBlur={handleBlur} placeholder='First name' required />
+              <br />
+              <input type="text" name="name" onBlur={handleBlur} placeholder='Last name' required />
+              <br />
+              <input type="text" name="email" onBlur={handleBlur} placeholder='Email' required />
+              <br />
+              <input type="password" name="password" onBlur={handleBlur} placeholder='Password' required />
+              <br />
+              <input type="password" name="re-password" onBlur={handleBlur} placeholder='Re-type password' required />
+              <br />
+              <input type="submit" value="Register" />
+            </div>) : <div> 
+              <input type="text" name="email" onBlur={handleBlur} placeholder='Email' required />
+              <br />
+              <input type="password" name="password" onBlur={handleBlur} placeholder='Password' required />
+              <br />
+              <input type="submit" value="Login" />
             </div>
           }
-          <input type="text" name="email" onBlur={handleBlur} placeholder='Email' required />
-          <br />
-          <input type="password" name="password" onBlur={handleBlur} placeholder='Password' required />
-          <br />
-          {signup && <input type="password" name="re-password" onBlur={handleBlur} placeholder='Re-type password' required />}
-          <br />
-          <input type="submit" value="Register" />
+          
         </form>
         {user.success && <h3> User {signup ? 'signed-up' : 'logged-in' } successfully</h3>}
         {/*  */}

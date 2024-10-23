@@ -1,12 +1,12 @@
 const express = require("express"); 
 const Post = require("../Models/Post");
 const Notification = require("../Models/Notification");
-const Minio = require('minio');  // MinIO client
+const Minio = require('minio'); 
 require('dotenv').config();
-const multer = require('multer');  // For handling file uploads
+const multer = require('multer'); 
 const router = express.Router();
 
-// Initialize MinIO client
+
 const minioClient = new Minio.Client({
     endPoint: process.env.MINIO_ENDPOINT,
     port: parseInt(process.env.MINIO_PORT),
@@ -15,7 +15,6 @@ const minioClient = new Minio.Client({
     secretKey: process.env.MINIO_ROOT_PASSWORD,
 });
 
-// Create a bucket if it doesn't exist
 minioClient.bucketExists(process.env.MINIO_BUCKET, (err) => {
     if (err) {
         minioClient.makeBucket(process.env.MINIO_BUCKET, '', (err) => {
@@ -27,27 +26,23 @@ minioClient.bucketExists(process.env.MINIO_BUCKET, (err) => {
     }
 });
 
-// Multer storage configuration for file uploads
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-// Create a new post (either code or file can be uploaded)
 router.post("/", upload.single('file'), async (req, res) => {
-  const { description, code, userId } = req.body;
+  const { description, code, userId, codeExtension } = req.body;
   const file = req.file;
-
+  console.log(codeExtension);
+  
   if (!description) {
     return res.status(400).send('Description is required.');
   }
 
   try {
     let postData = { description, user: userId };
-
-    // Handle the code snippet (if provided)
     if (code) {
-      const fileName = `${Date.now()}_post_code.txt`;
+      const fileName = `${Date.now()}_post_code.${codeExtension}`;
 
-      // Upload code as a text file to MinIO
       await minioClient.putObject(process.env.MINIO_BUCKET, fileName, Buffer.from(code), (err, etag) => {
         if (err) {
           return res.status(500).send('Error uploading code to MinIO.');
@@ -56,12 +51,9 @@ router.post("/", upload.single('file'), async (req, res) => {
         postData.fileUrl = `http://${process.env.MINIO_ENDPOINT}:${process.env.MINIO_PORT}/${process.env.MINIO_BUCKET}/${fileName}`;
       });
     }
-
-    // Handle file upload (if provided)
     if (file) {
       const fileName = `${Date.now()}_${file.originalname}`;
 
-      // Upload the file to MinIO
       await minioClient.putObject(process.env.MINIO_BUCKET, fileName, file.buffer, (err, etag) => {
         if (err) {
           return res.status(500).send('Error uploading file to MinIO.');
@@ -70,22 +62,16 @@ router.post("/", upload.single('file'), async (req, res) => {
       });
     }
 
-    // Save the post in MongoDB (either code or file or both)
     const post = new Post(postData);
     await post.save();
 
     const notification = new Notification({
       message: "New post created",
       postId: post._id,
-      user: userId  // Make sure to link the user to the notification
+      user: userId  
     });
     await notification.save();
-    
-
-    // Populate the user field in the post response
     const populatedPost = await Post.findById(post._id).populate("user", "email _id").exec();
-
-    // Return the newly created post
     res.status(201).json(populatedPost);
   } catch (error) {
     console.error(error);
@@ -93,11 +79,9 @@ router.post("/", upload.single('file'), async (req, res) => {
   }
 });
 
-// Get the post count (excluding the current user)
 router.get("/count", async (req, res) => {
   const { userId } = req.query;
   try {
-    // Count posts that don't belong to the current user
     const postCount = await Post.countDocuments({ user: { $ne: userId } });
     res.json({ count: postCount });
   } catch (error) {
@@ -106,11 +90,9 @@ router.get("/count", async (req, res) => {
   }
 });
 
-// Get all posts (excluding the current user)
 router.get("/", async (req, res) => {
   const { userId } = req.query;
   try {
-    // Find posts that don't belong to the current user and populate the user info
     const posts = await Post.find({ user: { $ne: userId } }).populate("user");
     res.json(posts);
   } catch (error) {
@@ -119,7 +101,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Get a specific post by ID
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -134,7 +115,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Delete all posts
 router.delete("/all", async (req, res) => {
   try {
     const result = await Post.deleteMany({});

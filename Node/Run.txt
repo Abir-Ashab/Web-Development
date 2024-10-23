@@ -1,0 +1,12 @@
+1) npm init (just enter-enter-enter...)
+2) npm i express cors body-parser
+3) Create a file `index.js` and add the following things here first : 
+    const express = require('express')
+    const bodyParser = require('body-parser'); 
+    const app = express();
+    app.use(bodyParser.json());
+    const cors = require('cors');
+    app.use(cors()); 
+4) Must create `.gitignore` and add node_modules/, .env there
+5) npm  i -g nodemon
+6) nodemon index.js
